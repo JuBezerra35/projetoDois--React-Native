@@ -1,13 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Cartao></Cartao>
+      <Cartao></Cartao>
     </View>
   );
+}
+
+function Cartao() {
+  return (
+    <View style={styles.caixaCartao}>
+      <Image 
+       source={{uri: 'https://picsum.photos/200'}}
+       style={{width:200, height:200}}
+       />
+      <Text style={styles.textoCartao}>Jully</Text>
+    </View> 
+  )
 }
 
 const styles = StyleSheet.create({
@@ -17,4 +28,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  caixaCartao: {
+    backgroundColor:'#ebc98aff',
+    padding:10,
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:5,
+    marginBottom:5,
+  },
+
+  textoCartao: {
+    fontSize:24,
+    color: '#626b75ff',
+    paddingVertical:5,
+  },
+
 });
+
+
