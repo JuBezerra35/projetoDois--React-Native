@@ -1,22 +1,35 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 
 export default function App() {
+
+  const [tamanho, setTamanho] = useState(100);
+
+  function clicouBotao() {
+    if(tamanho == 100)
+     setTamanho(300);
+    else
+      setTamanho(100);
+
+  }
+
   return (
     <View style={styles.container}>
-      <Cartao></Cartao>
-      <Cartao></Cartao>
+      <Cartao nomeProfessor={'Freddy'} medida={tamanho}></Cartao>
+      <Button title='Aumentar Cartão' onPress={clicouBotao}></Button>
     </View>
   );
 }
 
-function Cartao() {
+function Cartao(props) {
+  const { nomeProfessor, medida} = props;
   return (
     <View style={styles.caixaCartao}>
       <Image 
        source={{uri: 'https://picsum.photos/200'}}
-       style={{width:200, height:200}}
+       style={{width: medida, height: medida}}
        />
-      <Text style={styles.textoCartao}>Jully</Text>
+      <Text style={styles.textoCartao}>{nomeProfessor}</Text>
     </View> 
   )
 }
